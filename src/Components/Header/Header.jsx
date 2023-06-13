@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <>
       <Link to="/">
-        <h1 className="text-primary-blue text-center text-5xl py-4">QuizHub</h1>
+        <h1 className="py-5 text-5xl text-center text-primary-blue">QuizHub</h1>
       </Link>
     </>
   );

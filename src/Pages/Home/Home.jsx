@@ -23,14 +23,14 @@ export default function Home({ name, setName, fetchQuestions }) {
     } else {
       setError(false);
       fetchQuestions(category, difficulty);
-      navigate("/");
+      navigate("/quiz");
     }
   };
   return (
     <>
-      <div className="flex flex-col p-3 md:justify-around md:items-center">
-        <div className="flex w-full md:w-[40%] md:gap-4  order-2 ">
-          <div className="flex flex-col content-center w-full px-5 space-y-4">
+      <div className="flex flex-col p-3 md:flex-row md:justify-around md:items-center ">
+        <div className="flex w-full md:w-[50%] md:gap-4  order-2  ">
+          <div className="flex flex-col content-center w-full px-5 space-y-4 md:px-10">
             <h2 className="text-2xl font-bold text-center text-primary-blue">
               Quiz Setting
             </h2>
@@ -87,17 +87,17 @@ export default function Home({ name, setName, fetchQuestions }) {
             <Button
               variant="contained"
               className="!bg-primary-blue"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit()}
             >
               START QUIZ
             </Button>
           </div>
         </div>
-        <div className="md:w-[60%]">
+        <div className="md:w-[50%] ">
           <img
             src="/QuizHub.png"
             alt="QuizHub"
-            className="max-w-sm p-3 mx-auto md:max-w-lg md:p-12"
+            className="p-3 mx-auto  max-w-[300px] sm:max-w-sm md:max-w-md lg:max-w-xl md:p-12"
           />
         </div>
       </div>

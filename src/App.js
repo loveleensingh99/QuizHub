@@ -10,24 +10,23 @@ import { useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [name, setName] = useState("aa");
+  const [name, setName] = useState("");
   const [questions, setQuestions] = useState();
   const [score, setScore] = useState(0);
 
   const fetchQuestions = async (category = "", difficulty = "") => {
-    //
     const { data } = await axios.get(
-      // `https://opentdb.com/api.php?amount=10${
-      //   difficulty && `&difficulty=${difficulty}`
-      // }&type=multiple`
-      "https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple"
+      `https://opentdb.com/api.php?amount=10${
+        category && `&category=${category}`
+      }${difficulty && `&difficulty=${difficulty}`}&type=multiple`
     );
+
     setQuestions(data.results);
   };
   return (
     <>
       <BrowserRouter>
-        <div className=" bg-primary-gray">
+        <div className="h-full bg-primary-gray xl:h-screen">
           <Header />
           <Routes>
             <Route
@@ -53,7 +52,10 @@ function App() {
                 />
               }
             ></Route>
-            <Route path="/result" element={<Result />}></Route>
+            <Route
+              path="/result"
+              element={<Result name={name} score={score} setScore={setScore} />}
+            ></Route>
           </Routes>
         </div>
         <Footer />
