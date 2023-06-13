@@ -10,7 +10,6 @@ import React, { useState } from "react";
 import { difficultyCategory, Categories } from "../../Data/Categories";
 import { useNavigate } from "react-router-dom";
 import { ErrorMessage } from "../../Components/SubComponents/SubComponents";
-
 export default function Home({ name, setName, fetchQuestions }) {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
@@ -24,25 +23,27 @@ export default function Home({ name, setName, fetchQuestions }) {
     } else {
       setError(false);
       fetchQuestions(category, difficulty);
-      navigate("/quiz");
+      navigate("/");
     }
   };
   return (
     <>
-      <div className="flex flex-col md:justify-around md:items-center  p-3">
+      <div className="flex flex-col p-3 md:justify-around md:items-center">
         <div className="flex w-full md:w-[40%] md:gap-4  order-2 ">
-          <div className="w-full space-y-4 flex flex-col content-center px-5">
-            <h2 className="font-bold text-primary-blue text-2xl text-center">
+          <div className="flex flex-col content-center w-full px-5 space-y-4">
+            <h2 className="text-2xl font-bold text-center text-primary-blue">
               Quiz Setting
             </h2>
-            {error && <ErrorMessage>Please Fill all the Fields</ErrorMessage>}
+            {error && (
+              <ErrorMessage message="Please Fill all the Fields"></ErrorMessage>
+            )}
 
             <TextField
               size="small"
               id="outlined-basic"
               label="Name"
               variant="outlined"
-              className=" w-full"
+              className="w-full "
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -96,7 +97,7 @@ export default function Home({ name, setName, fetchQuestions }) {
           <img
             src="/QuizHub.png"
             alt="QuizHub"
-            className="max-w-sm md:max-w-lg p-3 md:p-12 mx-auto"
+            className="max-w-sm p-3 mx-auto md:max-w-lg md:p-12"
           />
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function Quiz({
           ...questions[curQues]?.incorrect_answers,
         ])
     );
-  }, [questions]);
+  }, [questions, curQues]);
   const handleShuffle = (options) => {
     return options.sort(() => Math.random() - 0.5);
   };
@@ -49,7 +49,7 @@ export default function Quiz({
         {questions ? (
           <>
             <div className="">
-              <div className=" justify-around items-center flex">
+              <div className="flex items-center justify-around ">
                 <H5 className={"uppercase"}>{questions[curQues].category} </H5>
                 <H5 className={"uppercase"}>Score:{score} </H5>
               </div>
