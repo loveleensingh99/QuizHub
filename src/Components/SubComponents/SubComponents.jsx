@@ -138,7 +138,9 @@ export function Question({
         {"."}
 
         <span className="pl-2 ">
-          {questions[curQues]?.question.replaceAll("&quot;", '"')}{" "}
+          {questions[curQues]?.question
+            .replaceAll("&quot;", '"')
+            .replaceAll("&#039;", "'")}{" "}
         </span>
       </H3>
       {/* Options */}
@@ -162,7 +164,7 @@ export function Question({
             ))}
           {/* </div> */}
         </div>
-        <div className="flex items-center justify-center gap-4 pt-8 md:gap-12">
+        <div className="flex items-center justify-center gap-4 pt-8 md:gap-12 !py-5">
           <Button
             variant="outlined"
             endIcon={<TbArrowBack />}
